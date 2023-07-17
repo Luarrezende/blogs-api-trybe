@@ -34,8 +34,19 @@ const getAllUsers = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(message);
 };
 
+const getById = async (req, res) => {
+  const { id } = req.params;
+  const { status, message } = await userService.getById(id);
+
+  if (status === 'NOT_FOUND') {
+    return res.status(mapStatusHTTP(status)).json({ message });
+  }
+
+  return res.status(mapStatusHTTP(status)).json(message);
+};
+
 module.exports = {
   postUser,
   getAllUsers,
-  // getById,
+  getById,
 };

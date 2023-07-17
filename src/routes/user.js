@@ -11,4 +11,6 @@ router.post('/', dnVerification, emailValidation, passValidation, userController
 
 router.get('/', tokenVerification, userController.getAllUsers);
 
+router.get('/:id', tokenVerification, userController.getById);
+
 module.exports = router;
