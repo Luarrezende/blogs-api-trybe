@@ -1,21 +1,20 @@
 const jwt = require('jsonwebtoken');
-const { loginService } = require('../services');
+const { userService } = require('../services');
 const mapStatusHTTP = require('../utils');
 
 const secret = process.env.JWT_SECRET;
 const config = {
   algorithm: 'HS256',
-  expireIn: '1d',
 };
 
 const token = (result) => jwt.sign(result, secret, config);
 
-const postLogin = async (req, res) => {
-  const { email, password } = req.body;
+const postUser = async (req, res) => {
+  const { displayName, email, password, image } = req.body;
 
-  const { status, message } = await loginService.postLogin(email, password);
+  const { status, message } = await userService.postUser(displayName, email, password, image);
 
-  if (status === 'INVALID_USER') {
+  if (status === 'CONFLICT') {
     return res.status(mapStatusHTTP(status)).json({ message });
   }
 
@@ -30,5 +29,7 @@ const postLogin = async (req, res) => {
 };
 
 module.exports = {
-  postLogin,
+  postUser,
+  // getAllUsers,
+  // getById,
 };
