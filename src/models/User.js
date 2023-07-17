@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const tableU = sequelize.define(
+    const User = sequelize.define(
       'User',
       {
         id: {
@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       {
-        timeStamps: false,
+        timestamps: false,
         tableName: 'users',
         underscored: true,
       },
     )
-  return tableU;
+  return User;
 };
