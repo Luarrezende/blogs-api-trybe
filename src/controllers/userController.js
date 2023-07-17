@@ -28,8 +28,14 @@ const postUser = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json({ token: tokenUser });
 };
 
+const getAllUsers = async (req, res) => {
+  const { status, message } = await userService.getAllUsers();
+
+  return res.status(mapStatusHTTP(status)).json(message);
+};
+
 module.exports = {
   postUser,
-  // getAllUsers,
+  getAllUsers,
   // getById,
 };

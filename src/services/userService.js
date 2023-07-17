@@ -12,6 +12,16 @@ const postUser = async (displayName, email, password, image) => {
   return { status: 'CREATED', message: create.dataValues };
 };
 
+const getAllUsers = async () => {
+  const users = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
+
+  return { status: 'SUCCESSFUL', message: users };
+};
+
 module.exports = {
   postUser,
+  getAllUsers,
+  // getById,
 };

@@ -5,7 +5,6 @@ const mapStatusHTTP = require('../utils');
 const secret = process.env.JWT_SECRET;
 const config = {
   algorithm: 'HS256',
-  expireIn: '1d',
 };
 
 const token = (result) => jwt.sign(result, secret, config);
