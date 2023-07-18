@@ -9,6 +9,13 @@ const postCategories = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(message);
 };
 
+const getAllUsers = async (req, res) => {
+  const { status, message } = await categoriesService.getAllUsers();
+
+  return res.status(mapStatusHTTP(status)).json(message);
+};
+
 module.exports = {
   postCategories,
+  getAllUsers,
 };
