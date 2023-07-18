@@ -10,7 +10,11 @@ const tokenVerification = (req, res, next) => {
   }
 
   try {
-    const tokenVerify = authorization.split(' ')[1];
+    let tokenVerify = authorization;
+    if (authorization.includes(' ')) {
+      const token = authorization.split(' ')[1];
+      tokenVerify = token;
+    }
 
     const result = jwt.verify(tokenVerify, secret);
 
