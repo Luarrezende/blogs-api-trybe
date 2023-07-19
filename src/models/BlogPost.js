@@ -28,17 +28,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         field: 'user_id',
-        references: {
-          model: 'users',
-          key: 'id',
-        }
       }
-    },
+    }, 
     {
       timestamps: false,
       tableName: 'blog_posts',
       underscored: true,
-    },
+    }
   )
   BlogPost.associate = (models) => {
     BlogPost.belongsTo(models.User, 
